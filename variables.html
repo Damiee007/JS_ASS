@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JavaScript Variables</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">JS Assignment</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="history.html">History</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="variables.html">Variables</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="card mx-auto p-4" style="max-width: 800px;">
+            <div class="card-body">
+                <h3 class="text-center mb-3">Understanding <code>var</code>, <code>let</code> and <code>const</code>
+                </h3>
+                <p class="text-center text-light mb-4">
+                    In JavaScript, we use <code>var</code>, <code>let</code>, and <code>const</code> to store values.
+                    They look similar but work differently.
+                </p>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-dark align-middle">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>var</th>
+                                <th>let</th>
+                                <th>const</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Meaning</td>
+                                <td>The old way to make variables.</td>
+                                <td>The modern way to make changeable variables.</td>
+                                <td>Used for values that never change.</td>
+                            </tr>
+                            <tr>
+                                <td>Scope</td>
+                                <td>Works everywhere inside a function.</td>
+                                <td>Works only inside the block where it’s created.</td>
+                                <td>Works only inside the block where it’s created.</td>
+                            </tr>
+                            <tr>
+                                <td>Can you re-declare it?</td>
+                                <td>Yes, you can use the same name again.</td>
+                                <td>No, not in the same block.</td>
+                                <td>No, not in the same block.</td>
+                            </tr>
+                            <tr>
+                                <td>Can you change its value?</td>
+                                <td>Yes, anytime.</td>
+                                <td>Yes, you can update it later.</td>
+                                <td>No, the value stays fixed.</td>
+                            </tr>
+                            <tr>
+                                <td>Before it’s created</td>
+                                <td>Exists but shows “undefined”.</td>
+                                <td>Gives an error if used before creation.</td>
+                                <td>Gives an error if used before creation.</td>
+                            </tr>
+                            <tr>
+                                <td>Best time to use</td>
+                                <td>Old code only (rare today).</td>
+                                <td>When the value can change.</td>
+                                <td>When the value should stay the same.</td>
+                            </tr>
+                            <tr>
+                                <td>Example</td>
+                                <td><code>var name = "Damiee";</code></td>
+                                <td><code>let age = 18;</code></td>
+                                <td><code>const country = "Nigeria";</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="mt-4 text-center text-light">
+                    💡 In short: use <strong>let</strong> for most cases, and <strong>const</strong> when you don’t want
+                    the value to change.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Damiee — Learning JavaScript Variables</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
