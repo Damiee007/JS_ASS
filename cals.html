@@ -271,7 +271,7 @@
         function calculateInvestment() {
             const amount = Number(document.getElementById("investAmount").value);
             const years = Number(document.getElementById("investYears").value);
-            const rate = 0.15; // 15%
+            const rate = 0.15;
             const result = document.getElementById("investResult");
 
             if (!amount || amount <= 0) {
@@ -289,17 +289,19 @@
         function calculateLoan() {
             const loanAmt = Number(document.getElementById("loanAmount").value);
             const years = Number(document.getElementById("loanYears").value);
-            const rate = 0.15; // 15%
+            const rate = 0.15;
             const result = document.getElementById("loanResult");
 
             if (!loanAmt || loanAmt <= 0) {
                 result.textContent = "Please enter a valid loan amount.";
                 return;
             }
+            else {
+                const interest = loanAmt * rate * years;
+                const totalPayment = loanAmt + interest;
+                result.textContent = `Total repayment after ${years} year(s): ₦${totalPayment.toFixed(2)}`;
+            }
 
-            const interest = loanAmt * rate * years;
-            const totalPayment = loanAmt + interest;
-            result.textContent = `Total repayment after ${years} year(s): ₦${totalPayment.toFixed(2)}`;
         }
     </script>
 </body>
