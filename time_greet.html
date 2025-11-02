@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting</title>
+    <style>
+        body {
+            background-color: #0d1b2a;
+        }
+        h1 {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="greeting">Hello!</h1>
+
+    <script>
+
+        const currentTime = new Date();
+        const hour = currentTime.getHours();
+
+        const greeting = document.getElementById("greeting");
+
+        let message = "";
+
+        if (hour < 12) {
+            message = "Good Morning!";
+        } else if (hour < 18) {
+            message = "Good Afternoon!";
+        } else {
+            message = "Good Evening!";
+        }
+        
+        greeting.textContent = message;
+
+    </script>
+</body>
+
+</html>

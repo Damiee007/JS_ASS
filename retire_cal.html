@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Retirement Calculator</title>
+</head>
+
+<body>
+    <h2>Retirement Age Calculator</h2>
+
+    <label>Enter your age:</label>
+    <input type="number" id="ageInput" placeholder="Enter age">
+    <button onclick="checkRetirement()">Check</button>
+
+    <p id="result"></p>
+
+    <script>
+        function checkRetirement() {
+            const retirementAge = 65;
+            const age = Number(document.getElementById("ageInput").value);
+            const result = document.getElementById("result");
+
+            if (age > retirementAge) {
+                const yearsOver = age - retirementAge;
+                result.textContent = "You should have retired " + yearsOver + " year(s) ago.";
+            } else if (age === retirementAge) {
+                result.textContent = "You will retire this year!";
+            } else {
+                const yearsLeft = retirementAge - age;
+                result.textContent = "You have " + yearsLeft + " year(s) left before retirement.";
+            }
+        }
+    </script>
+</body>
+
+</html>
