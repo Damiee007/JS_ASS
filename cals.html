@@ -104,39 +104,87 @@
         }
 
         .bg_p {
-            background-color: white;
             border-radius: 10px;
             width: 80%;
-            height: 60px;
-            margin: 10px auto;
+            height: auto;
+            margin: auto;
             padding: 10px;
             text-align: center;
-            color: black;
+            color: white;
         }
 
         p {
             margin: 0;
+        }
+
+        .ops {
+            display: flex;
+            gap: 5px;
         }
     </style>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">JS Assignment</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+            <a class="navbar-brand" href="index.html">JavaScript</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">About Me</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="history.html">History</a></li>
-                    <li class="nav-item"><a class="nav-link" href="variables.html">Variables</a></li>
-                    <li class="nav-item"><a class="nav-link" href="cals.html">Calculators</a></li>
-                </ul>
+            <div class="offcanvas offcanvas-end text-bg-dark" id="offcanvasNavbar" tabindex="-1">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">JavaScript Menu</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav mx-auto">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                Intro to JavaScript
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="index.html">About Me</a></li>
+                                <li><a class="dropdown-item" href="history.html">History</a></li>
+                                <li><a class="dropdown-item" href="variables.html">Variables</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="cals.html">Calculators</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                Projects
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="uberA.html">Uber App</a></li>
+                                <li><a class="dropdown-item" href="hotelB.html">Hotel App</a></li>
+                                <li><a class="dropdown-item" href="todo.html">Todo App</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                Others
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="formVal.html">Form Validation</a></li>
+                                <li><a class="dropdown-item" href="gmng.html">Guess My Number Game</a></li>
+                                <li><a class="dropdown-item" href="gubtod.html">Greet User By Time of Day</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
             </div>
+
         </div>
     </nav>
 
@@ -146,7 +194,7 @@
             <div class="title">
                 <h1>Retirement Calculator</h1>
             </div>
-            <input id="ageInput" type="number" placeholder="Enter your age">
+            <input id="birthYearInput" placeholder="Enter your birth year">
             <button onclick="calculateRetirement()">Calculate</button>
             <div class="bg_p">
                 <p id="retirementResult"></p>
@@ -157,33 +205,38 @@
             <div class="title">
                 <h1>Simple Calculator</h1>
             </div>
-            <input type="number" id="num1" placeholder="Enter first number">
-            <select id="operator">
-                <option value="+">+</option>
-                <option value="-">−</option>
-                <option value="*">×</option>
-                <option value="/">÷</option>
-                <option value="%">%</option>
-                <option value="**">xⁿ</option>
-            </select>
-            <input type="number" id="num2" placeholder="Enter second number">
+            <input id="num1" placeholder="Enter first number">
+            <div class="ops">
+                <button class="operator-btn">+</button>
+                <button class="operator-btn">-</button>
+                <button class="operator-btn">x</button>
+                <button class="operator-btn">/</button>
+                <button class="operator-btn">%</button>
+            </div>
+            <input id="num2" placeholder="Enter second number">
             <button onclick="calculate()">Calculate</button>
             <div class="bg_p">
                 <p id="result"></p>
             </div>
         </div>
 
+
         <div class="box-3">
             <div class="title">
                 <h1>Investment Calculator</h1>
             </div>
-            <p style="text-align:center;">Fixed Rate: 15%</p>
-            <input type="number" id="investAmount" placeholder="Investment Amount">
+            <p style="text-align:center;">Interest rate: 15%</p>
+            <input type="" id="investAmount" placeholder="Investment Amount">
             <select id="investYears">
                 <option value="1">1 Year</option>
                 <option value="2">2 Years</option>
                 <option value="3">3 Years</option>
+                <option value="4">4 Years</option>
                 <option value="5">5 Years</option>
+                <option value="6">6 Years</option>
+                <option value="7">7 Years</option>
+                <option value="8">8 Years</option>
+                <option value="9">9 Years</option>
                 <option value="10">10 Years</option>
             </select>
             <button onclick="calculateInvestment()">Calculate</button>
@@ -196,14 +249,22 @@
             <div class="title">
                 <h1>Loan Calculator</h1>
             </div>
-            <p style="text-align:center;">Fixed Rate: 15%</p>
-            <input type="number" id="loanAmount" placeholder="Loan Amount">
-            <select id="loanYears">
-                <option value="1">1 Year</option>
-                <option value="2">2 Years</option>
-                <option value="3">3 Years</option>
-                <option value="5">5 Years</option>
-                <option value="10">10 Years</option>
+            <p style="text-align:center;">Rate: 15% per month</p>
+            <input type="" id="loanAmount" placeholder="Loan Amount">
+            <select id="loanMonths">
+                <option value="">Select Months</option>
+                <option value="1">1 month</option>
+                <option value="2">2 months</option>
+                <option value="3">3 months</option>
+                <option value="4">4 months</option>
+                <option value="5">5 months</option>
+                <option value="6">6 months</option>
+                <option value="7">7 months</option>
+                <option value="8">8 months</option>
+                <option value="9">9 months</option>
+                <option value="10">10 months</option>
+                <option value="11">11 months</option>
+                <option value="12">12 months</option>
             </select>
             <button onclick="calculateLoan()">Calculate</button>
             <div class="bg_p">
@@ -217,16 +278,19 @@
     <script>
         function calculateRetirement() {
             const retirementAge = 65;
-            const age = Number(document.getElementById("ageInput").value);
+            const birthYear = Number(document.getElementById("birthYearInput").value);
             const result = document.getElementById("retirementResult");
+            const currentYear = new Date().getFullYear();
 
-            if (!age || age <= 0) {
-                result.textContent = "Please enter a valid age.";
+            if (!birthYear || birthYear <= 0 || birthYear > currentYear) {
+                result.textContent = "Please enter a valid birth year.";
                 result.style.color = "red";
                 return;
             }
 
-            else if (age > retirementAge) {
+            const age = currentYear - birthYear;
+
+            if (age > retirementAge) {
                 const yearsPastRetirement = age - retirementAge;
                 result.textContent = "You should have retired " + yearsPastRetirement + " year(s) ago.";
                 result.style.color = "orange";
@@ -240,68 +304,96 @@
             }
         }
 
+
+        let selectedOperator = "";
+
+        let operators = document.querySelectorAll(".operator-btn");
+
+        for (let i = 0; i < operators.length; i++) {
+            operators[i].addEventListener("click", function () {
+                selectedOperator = this.innerText;
+            });
+        }
+
         function calculate() {
             let num1 = Number(document.getElementById("num1").value);
             let num2 = Number(document.getElementById("num2").value);
-            let operator = document.getElementById("operator").value;
             let result;
 
-            if (operator === "+") {
+            if (selectedOperator === "+") {
                 result = num1 + num2;
             }
-            else if (operator === "-") {
+            else if (selectedOperator === "-") {
                 result = num1 - num2;
             }
-            else if (operator === "*") {
+            else if (selectedOperator === "x") {
                 result = num1 * num2;
             }
-            else if (operator === "/") {
-                result = num2 !== 0 ? num1 / num2 : "Cannot divide by zero!";
+            else if (selectedOperator === "/") {
+                result = num2 !== 0 ? num1 / num2 : "Cannot divide by zero";
             }
-            else if (operator === "%") {
+            else if (selectedOperator === "%") {
                 result = num1 % num2;
             }
-            else if (operator === "**") {
-                result = num1 ** num2;
+            else {
+                result = "Please select an operator";
             }
 
-            document.getElementById("result").textContent = result;
+            document.getElementById("result").innerText = result;
         }
+
 
         function calculateInvestment() {
-            const amount = Number(document.getElementById("investAmount").value);
-            const years = Number(document.getElementById("investYears").value);
-            const rate = 0.15;
-            const result = document.getElementById("investResult");
+            let amount = Number(document.getElementById("investAmount").value);
+            let years = Number(document.getElementById("investYears").value);
+            let rate = 0.15;
 
-            if (!amount || amount <= 0) {
-                result.textContent = "Please enter a valid amount.";
+            if (amount <= 0) {
+                document.getElementById("investResult").innerText = "Enter a valid amount";
                 return;
             }
 
-            else {
-                const total = amount * Math.pow(1 + rate, years);
-                result.textContent = `After ${years} year(s), you'll have ₦${total.toFixed(2)}`;
+            let finalAmount = amount;
+
+            for (let i = 1; i <= years; i++) {
+                finalAmount += finalAmount * rate;
             }
 
+            let profit = finalAmount - amount;
+            let totalMonths = years * 12;
+            let monthlyReturn = finalAmount / totalMonths;
+
+            document.getElementById("investResult").innerHTML =
+                `You are investing ₦${amount.toFixed(2)} for ${years} year(s) (${totalMonths} months).<br>
+        Total Return: ₦${finalAmount.toFixed(2)}<br>
+        Profit: ₦${profit.toFixed(2)}<br>
+        Monthly Return: ₦${monthlyReturn.toFixed(2)}`;
         }
 
-        function calculateLoan() {
-            const loanAmt = Number(document.getElementById("loanAmount").value);
-            const years = Number(document.getElementById("loanYears").value);
-            const rate = 0.15;
-            const result = document.getElementById("loanResult");
 
-            if (!loanAmt || loanAmt <= 0) {
-                result.textContent = "Please enter a valid loan amount.";
+        function calculateLoan() {
+            const amount = Number(document.getElementById("loanAmount").value);
+            const months = Number(document.getElementById("loanMonths").value);
+            const monthlyRate = 0.15; 
+
+            if (isNaN(amount) || amount <= 0) {
+                document.getElementById("loanResult").textContent = "Enter a valid loan amount";
                 return;
             }
-            else {
-                const interest = loanAmt * rate * years;
-                const totalPayment = loanAmt + interest;
-                result.textContent = `Total repayment after ${years} year(s): ₦${totalPayment.toFixed(2)}`;
+
+            if (isNaN(months) || months <= 0) {
+                document.getElementById("loanResult").textContent = "Select a valid number of months";
+                return;
             }
 
+            const monthlyInterest = amount * monthlyRate;
+            const totalRepayment = amount + (monthlyInterest * months);
+            const monthlyRepayment = totalRepayment / months;
+
+            document.getElementById("loanResult").innerHTML =
+                `You are borrowing ₦${amount.toLocaleString()} for ${months} month(s).<br>
+         Total Repayment: ₦${totalRepayment.toLocaleString(undefined, { maximumFractionDigits: 2 })}<br>
+         Monthly Repayment: ₦${monthlyRepayment.toLocaleString(undefined, { maximumFractionDigits: 2 })}`;
         }
     </script>
 </body>

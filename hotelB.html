@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paradise Hotel Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            margin: 20px auto;
+            max-width: 500px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .room-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .room-btn {
+            flex: 1 1 45%;
+            padding: 15px;
+            font-weight: 600;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .room-btn:hover {
+            background-color: #0d6efd;
+            color: #fff;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .countdown-card {
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+       <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="index.html">JavaScript</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-end text-bg-dark" id="offcanvasNavbar" tabindex="-1">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">JavaScript Menu</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav mx-auto">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                Intro to JavaScript
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="index.html">About Me</a></li>
+                                <li><a class="dropdown-item" href="history.html">History</a></li>
+                                <li><a class="dropdown-item" href="variables.html">Variables</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="cals.html">Calculators</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                Projects
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="uberA.html">Uber App</a></li>
+                                <li><a class="dropdown-item" href="hotelB.html">Hotel App</a></li>
+                                <li><a class="dropdown-item" href="todo.html">Todo App</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                Others
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="formVal.html">Form Validation</a></li>
+                                <li><a class="dropdown-item" href="gmng.html">Guess My Number Game</a></li>
+                                <li><a class="dropdown-item" href="gubtod.html">Greet User By Time of Day</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <div class="container py-4">
+
+        <div class="card text-center">
+            <h2 class="mb-3" style="color: white;">🏨 Paradise Hotel</h2>
+            <p>Select Your Room Type</p>
+            <div class="room-grid">
+                <button class="room-btn" data-room="standard" data-price="5000">Standard<br>₦5,000/night</button>
+                <button class="room-btn" data-room="emerald" data-price="15000">Emerald<br>₦15,000/night</button>
+                <button class="room-btn" data-room="supreme" data-price="25000">Supreme<br>₦25,000/night</button>
+                <button class="room-btn" data-room="presidential"
+                    data-price="90000">Presidential<br>₦90,000/night</button>
+            </div>
+
+            <div class="mb-3">
+                <label for="days" class="form-label">Number of Nights</label>
+                <input type="" class="form-control" id="days" placeholder="Enter number of nights" min="1">
+            </div>
+        </div>
+
+        <div id="confirmation" class="card hidden text-center">
+    <h3 style="color: white;">Booking Confirmation</h3>
+    
+    <p style="color: white;">
+        <strong id="roomTypeName" style="color: white;"></strong> Room
+    </p>
+    
+    <p style="color: white;">
+        Rate: <span id="nightlyRate" style="color: white;"></span> per night
+    </p>
+    
+    <p style="color: white;">
+        Duration: <span id="numNights" style="color: white;"></span> nights
+    </p>
+    
+    <p class="price" style="color: white;">
+        Total: <span id="totalPrice" style="color: white;"></span>
+    </p>
+    
+    <div class="d-flex justify-content-around mt-3">
+        <button class="btn btn-secondary" id="cancelBtn" style="color: white;">
+            Cancel
+        </button>
+        <button class="btn btn-primary" id="continueBtn" style="color: white;">
+            Confirm Booking
+        </button>
+    </div>
+</div>
+        </div>
+
+        <div id="counter" class="card countdown-card hidden">
+            <h3 style="color: white;">Your Stay Expires In:</h3>
+            <div id="display" class="fs-2 my-3" style="color: white;">00:00:00</div>
+            <button class="btn btn-primary" id="extendBtn">Extend Stay</button>
+        </div>
+
+    </div>
+
+    <script>
+        let selectedRoom = null, selectedPrice = 0, selectedNights = 0, countdownInterval = null;
+
+        const roomButtons = document.querySelectorAll('.room-btn');
+        const daysInput = document.getElementById('days');
+        const confirmation = document.getElementById('confirmation');
+        const counter = document.getElementById('counter');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const continueBtn = document.getElementById('continueBtn');
+        const extendBtn = document.getElementById('extendBtn');
+
+        roomButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const nights = parseInt(daysInput.value);
+                if (!nights || nights < 1) { alert('Enter number of nights!'); daysInput.focus(); return; }
+                selectedRoom = btn.dataset.room;
+                selectedPrice = parseInt(btn.dataset.price);
+                selectedNights = nights;
+                showConfirmation();
+            });
+        });
+
+        function showConfirmation() {
+            const total = selectedPrice * selectedNights;
+            document.getElementById('roomTypeName').textContent = selectedRoom.charAt(0).toUpperCase() + selectedRoom.slice(1);
+            document.getElementById('nightlyRate').textContent = `₦${selectedPrice.toLocaleString()}`;
+            document.getElementById('numNights').textContent = selectedNights;
+            document.getElementById('totalPrice').textContent = `₦${total.toLocaleString()}`;
+            document.querySelector('.card.text-center').classList.add('hidden');
+            confirmation.classList.remove('hidden');
+        }
+
+        cancelBtn.addEventListener('click', () => {
+            confirmation.classList.add('hidden');
+            document.querySelector('.card.text-center').classList.remove('hidden');
+            daysInput.value = '';
+        });
+
+        continueBtn.addEventListener('click', () => {
+            confirmation.classList.add('hidden');
+            counter.classList.remove('hidden');
+            startCountdown(selectedNights);
+        });
+
+        extendBtn.addEventListener('click', () => {
+            clearInterval(countdownInterval);
+            counter.classList.add('hidden');
+            document.querySelector('.card.text-center').classList.remove('hidden');
+            daysInput.value = '';
+        });
+
+        function startCountdown(days) {
+            let remainingSeconds = days * 24 * 60 * 60;
+            function updateDisplay() {
+                const hours = Math.floor(remainingSeconds / 3600);
+                const minutes = Math.floor((remainingSeconds % 3600) / 60);
+                const seconds = remainingSeconds % 60;
+                document.getElementById('display').textContent =
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                if (remainingSeconds <= 0) { clearInterval(countdownInterval); alert('Your booking has expired!'); counter.classList.add('hidden'); document.querySelector('.card.text-center').classList.remove('hidden'); daysInput.value = ''; }
+                else remainingSeconds--;
+            }
+            updateDisplay();
+            countdownInterval = setInterval(updateDisplay, 1000);
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="index.html">JavaScript</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-end text-bg-dark" id="offcanvasNavbar" tabindex="-1">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">JavaScript Menu</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav mx-auto">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                Intro to JavaScript
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="index.html">About Me</a></li>
+                                <li><a class="dropdown-item" href="history.html">History</a></li>
+                                <li><a class="dropdown-item" href="variables.html">Variables</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="cals.html">Calculators</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                Projects
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="uberA.html">Uber App</a></li>
+                                <li><a class="dropdown-item" href="hotelB.html">Hotel App</a></li>
+                                <li><a class="dropdown-item" href="todo.html">Todo App</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                Others
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="formVal.html">Form Validation</a></li>
+                                <li><a class="dropdown-item" href="gmng.html">Guess My Number Game</a></li>
+                                <li><a class="dropdown-item" href="gubtod.html">Greet User By Time of Day</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="text-center mb-4" style="color: white;">My Todo List</h2>
+
+                        <div class="input-group mb-3">
+                            <input id="myStuff" type="text" class="form-control" placeholder="Enter your task..." style="color:  black;">
+                            <button class="btn btn-primary" onclick="addItem()">Add</button>
+                        </div>
+
+                        <ul id="myDiv" class="list-group mb-3"></ul>
+
+                        <p id="emptyMessage" class="text-center text-muted" style="color: white;">
+                            No tasks yet. Add one above!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function addItem() {
+            let inputValue = document.getElementById('myStuff').value;
+            if (inputValue === '') {
+                alert('Please enter a task!');
+                return;
+            }
+
+            let li = document.createElement('li');
+            li.className = 'list-group-item d-flex justify-content-between align-items-center flex-wrap';
+
+            let textSpan = document.createElement('span');
+            textSpan.textContent = inputValue;
+
+            let buttonsDiv = document.createElement('div');
+            buttonsDiv.className = 'btn-group btn-group-sm';
+
+            let editButton = document.createElement('button');
+            editButton.className = 'btn btn-warning';
+            editButton.textContent = 'Edit';
+            editButton.onclick = () => editItem(li, textSpan);
+
+            let deleteButton = document.createElement('button');
+            deleteButton.className = 'btn btn-danger';
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = () => deleteItem(li);
+
+            buttonsDiv.append(editButton, deleteButton);
+            li.append(textSpan, buttonsDiv);
+
+            document.getElementById('myDiv').appendChild(li);
+            document.getElementById('myStuff').value = '';
+            document.getElementById('emptyMessage').style.display = 'none';
+        }
+
+        function deleteItem(li) {
+            if (confirm('Delete this task?')) {
+                li.remove();
+                if (document.getElementById('myDiv').children.length === 0) {
+                    document.getElementById('emptyMessage').style.display = 'block';
+                }
+            }
+        }
+
+        function editItem(li, textSpan) {
+            let input = document.createElement('input');
+            input.className = 'form-control me-2';
+            input.value = textSpan.textContent;
+
+            let saveBtn = document.createElement('button');
+            saveBtn.className = 'btn btn-success btn-sm me-1';
+            saveBtn.textContent = 'Save';
+
+            let cancelBtn = document.createElement('button');
+            cancelBtn.className = 'btn btn-secondary btn-sm';
+            cancelBtn.textContent = 'Cancel';
+
+            saveBtn.onclick = () => {
+                if (input.value === '') {
+                    alert('Task cannot be empty!');
+                    return;
+                }
+                textSpan.textContent = input.value;
+                resetItem(li, textSpan);
+            };
+
+            cancelBtn.onclick = () => resetItem(li, textSpan);
+
+            li.innerHTML = '';
+            li.append(input, saveBtn, cancelBtn);
+            input.focus();
+        }
+
+        function resetItem(li, textSpan) {
+            let editBtn = document.createElement('button');
+            editBtn.className = 'btn btn-warning btn-sm me-1';
+            editBtn.textContent = 'Edit';
+            editBtn.onclick = () => editItem(li, textSpan);
+
+            let delBtn = document.createElement('button');
+            delBtn.className = 'btn btn-danger btn-sm';
+            delBtn.textContent = 'Delete';
+            delBtn.onclick = () => deleteItem(li);
+
+            let btnDiv = document.createElement('div');
+            btnDiv.append(editBtn, delBtn);
+
+            li.innerHTML = '';
+            li.append(textSpan, btnDiv);
+        }
+
+        document.getElementById('myStuff').addEventListener('keypress', e => {
+            if (e.key === 'Enter') addItem();
+        });
+    </script>
+
+</body>
+
+</html>

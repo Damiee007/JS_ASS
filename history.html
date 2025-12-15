@@ -11,23 +11,68 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">JS Assignment</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+            <a class="navbar-brand" href="index.html">JavaScript</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">About Me</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="history.html">History</a></li>
-                    <li class="nav-item"><a class="nav-link" href="variables.html">Variables</a></li>
-                    <li class="nav-item"><a class="nav-link" href="cals.html">Calculators</a></li>
-                </ul>
+            <div class="offcanvas offcanvas-end text-bg-dark" id="offcanvasNavbar" tabindex="-1">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">JavaScript Menu</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav mx-auto">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                Intro to JavaScript
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="index.html">About Me</a></li>
+                                <li><a class="dropdown-item" href="history.html">History</a></li>
+                                <li><a class="dropdown-item" href="variables.html">Variables</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="cals.html">Calculators</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                Projects
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="uberA.html">Uber App</a></li>
+                                <li><a class="dropdown-item" href="hotelB.html">Hotel App</a></li>
+                                <li><a class="dropdown-item" href="todo.html">Todo App</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                Others
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="formVal.html">Form Validation</a></li>
+                                <li><a class="dropdown-item" href="gmng.html">Guess My Number Game</a></li>
+                                <li><a class="dropdown-item" href="gubtod.html">Greet User By Time of Day</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
             </div>
+
         </div>
     </nav>
+
 
     <div class="container mt-5">
         <div class="card mx-auto p-4" style="max-width: 700px;">

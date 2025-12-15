@@ -1,17 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>JavaScript About Me</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUBTOD</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark">
+     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
 
             <a class="navbar-brand" href="index.html">JavaScript</a>
@@ -73,45 +72,24 @@
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <div class="card mx-auto p-4" style="max-width: 600px;">
-            <div class="card-body text-center">
-                <h3 class="mb-3">Welcome to My JavaScript Page</h3>
-                <p class="text-light">Click the button below to learn more about me through JavaScript.</p>
-                <button class="btn btn-primary px-4" onclick="showInfo()">Show My Info</button>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>© 2025 Damiee — Built with HTML, CSS, Bootstrap & JS</p>
-    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        function showInfo() {
-            let userName = prompt("Hey there! What's your name?");
-            console.log("Welcome, " + userName + "!");
+        const now = new Date();
+        const hour = now.getHours();
 
-            let my = {
-                name: "Damiee",
-                location: "Ibadan, Nigeria",
-                hobbies: ["coding", "listening to music", "gaming"],
-                height: "5.8ft",
-                gender: "male",
-                maritalStatus: "single",
-                religion: "Christian",
-            };
-
-            alert(`Hey ${userName}!
-My name is ${my.name}. I live in ${my.location}.
-I'm a ${my.gender}, ${my.height} tall, and currently ${my.maritalStatus}.
-My hobbies are ${my.hobbies.join(", ")}.
-I’m a ${my.religion}.`);
+        if (hour >= 6 && hour < 12) {
+            alert('Good morning');
+        }
+        else if (hour >= 12 && hour < 18) {
+            alert('Good afternoon');
+        }
+        else {
+            alert('Good evening');
         }
     </script>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

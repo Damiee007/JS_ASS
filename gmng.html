@@ -1,17 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>JavaScript About Me</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess My Number</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #1b263b;
+            min-height: 100vh;
+        }
+
+        .game-card {
+            background-color: #16213e;
+            color: white;
+            border-radius: 12px;
+            border: 2px solid #0b1b2b;
+            padding: 2rem;
+            max-width: 450px;
+            margin: 3rem auto;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-card input {
+            border: 2px solid #0b1b2b;
+            color: black;
+        }
+
+        .game-card button {
+            border-radius: 8px;
+        }
+
+        #message {
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark">
+     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
 
             <a class="navbar-brand" href="index.html">JavaScript</a>
@@ -73,45 +103,66 @@
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <div class="card mx-auto p-4" style="max-width: 600px;">
-            <div class="card-body text-center">
-                <h3 class="mb-3">Welcome to My JavaScript Page</h3>
-                <p class="text-light">Click the button below to learn more about me through JavaScript.</p>
-                <button class="btn btn-primary px-4" onclick="showInfo()">Show My Info</button>
-            </div>
-        </div>
+    <div class="game-card text-center">
+        <h2 class="mb-3">Guess My Number</h2>
+        <p>Guess a number between 1 and 20</p>
+
+        <input id="guessInput" class="form-control mb-3" placeholder="Enter your guess">
+
+        <button class="btn btn-light w-100 mb-3" onclick="checkGuess()">Check</button>
+
+        <p id="message"></p>
+
+        <p>Score: <span id="score">20</span></p>
+        <p>Highscore: <span id="highscore">0</span></p>
+
+        <button class="btn btn-secondary w-100" onclick="resetGame()">Play Again</button>
     </div>
 
-    <footer>
-        <p>© 2025 Damiee — Built with HTML, CSS, Bootstrap & JS</p>
-    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        function showInfo() {
-            let userName = prompt("Hey there! What's your name?");
-            console.log("Welcome, " + userName + "!");
+        let secretNumber = Math.floor(Math.random() * 20) + 1;
+        let score = 20;
+        let highscore = 0;
 
-            let my = {
-                name: "Damiee",
-                location: "Ibadan, Nigeria",
-                hobbies: ["coding", "listening to music", "gaming"],
-                height: "5.8ft",
-                gender: "male",
-                maritalStatus: "single",
-                religion: "Christian",
-            };
+        function checkGuess() {
+            const guess = Number(document.getElementById("guessInput").value);
+            const message = document.getElementById("message");
 
-            alert(`Hey ${userName}!
-My name is ${my.name}. I live in ${my.location}.
-I'm a ${my.gender}, ${my.height} tall, and currently ${my.maritalStatus}.
-My hobbies are ${my.hobbies.join(", ")}.
-I’m a ${my.religion}.`);
+            if (!guess) {
+                message.textContent = "Enter a number!";
+                message.style.color = "red";
+            } else if (guess === secretNumber) {
+                message.textContent = "Correct Number!";
+                message.style.color = "green";
+
+                if (score > highscore) {
+                    highscore = score;
+                    document.getElementById("highscore").textContent = highscore;
+                }
+            } else {
+                if (score > 1) {
+                    message.textContent = guess > secretNumber ? "Too high!" : "Too low!";
+                    message.style.color = "red";
+                    score--;
+                    document.getElementById("score").textContent = score;
+                } else {
+                    message.textContent = "Game over!";
+                    message.style.color = "red";
+                    document.getElementById("score").textContent = 0;
+                }
+            }
+        }
+
+        function resetGame() {
+            score = 20;
+            secretNumber = Math.floor(Math.random() * 20) + 1;
+            document.getElementById("score").textContent = score;
+            document.getElementById("message").textContent = "";
+            document.getElementById("guessInput").value = "";
         }
     </script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
